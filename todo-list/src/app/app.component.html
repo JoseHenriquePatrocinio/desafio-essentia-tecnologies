@@ -1,0 +1,47 @@
+<div class="container">
+
+    <h1>Todo List</h1>
+  
+    <div class="add-form">
+      <input
+        [(ngModel)]="newTask"
+        placeholder="Nova tarefa"
+        (keyup.enter)="addTask()">
+  
+      <button (click)="addTask()">
+        Adicionar
+      </button>
+    </div>
+  
+    <ul>
+  
+      @for (task of todos; track task.id) {
+  
+        <li>
+  
+          <input
+            type="checkbox"
+            [checked]="task.completed"
+            (change)="toggle(task)">
+  
+          <span
+            [class.completed]="task.completed">
+  
+            {{ task.title }}
+  
+          </span>
+  
+          <button
+            (click)="deleteTask(task.id)">
+  
+            Excluir
+  
+          </button>
+  
+        </li>
+  
+      }
+  
+    </ul>
+  
+  </div>
